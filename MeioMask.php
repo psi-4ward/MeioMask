@@ -55,7 +55,7 @@ class MeioMask extends \System
 		{
 			case 'date':
 				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['dateFormat']);
-				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999 2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
+				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
 			break;
 			case 'datim':
 				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['datimFormat']);
@@ -63,7 +63,7 @@ class MeioMask extends \System
 			break;
 			case 'time':
 				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['timeFormat']);
-				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999 2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
+				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
 			break;
 		}
 
