@@ -25,7 +25,7 @@ class MeioMask extends \System
 	 */
 	public function registerWizard($strTable)
 	{
-		$GLOBALS['TL_JAVASCRIPT']['MeioMask'] = 'system/modules/MeioMask/public/Meio.Mask.js?'.time();
+		$GLOBALS['TL_JAVASCRIPT']['MeioMask'] = 'system/modules/MeioMask/public/Meio.Mask.js';
 
 		foreach($GLOBALS['TL_DCA'][$strTable]['fields'] as $fld => $data)
 		{

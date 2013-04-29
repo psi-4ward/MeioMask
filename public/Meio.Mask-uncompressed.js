@@ -269,10 +269,11 @@ Element.implement({
         },
 
         keydown: function(e, o){
-            this.ignore = (Meio.Mask.ignoreKeys[e.code] && !o.isRemoveKey) || e.control || e.meta || e.alt;
+	        this.ignore = (Meio.Mask.ignoreKeys[e.code] && !o.isRemoveKey) || e.control || e.meta || e.alt;
             if (this.ignore || o.isRemoveKey){
                 var keyRepresentation = Meio.Mask.ignoreKeys[e.code] || '';
                 this.fireEvent('valid', [this.element, e.code, keyRepresentation]);
+	            if(e.key=='enter') this.element.fireEvent('change');
             }
             return (Meio.Mask.onlyKeyDownRepeat && o.isRemoveKey) ? this.keypress(e, o) : true;
         },
@@ -822,6 +823,7 @@ Meio.Mask.Reverse = new Class({
     },
 
     keypress: function(e, o){
+console.log(e,o,'keypress');
         if (this.ignore) return true;
         e.preventDefault();
 
