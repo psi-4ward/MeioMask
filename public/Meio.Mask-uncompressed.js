@@ -273,7 +273,7 @@ Element.implement({
             if (this.ignore || o.isRemoveKey){
                 var keyRepresentation = Meio.Mask.ignoreKeys[e.code] || '';
                 this.fireEvent('valid', [this.element, e.code, keyRepresentation]);
-	            if(e.key=='enter') this.element.fireEvent('change');
+	            if(e.key=='enter') this.blur(e, o);
             }
             return (Meio.Mask.onlyKeyDownRepeat && o.isRemoveKey) ? this.keypress(e, o) : true;
         },
