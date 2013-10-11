@@ -65,6 +65,9 @@ class MeioMask extends \System
 				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['timeFormat']);
 				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
 			break;
+			case 'mac':
+				// return '<script>new Meio.Mask.Fixed({mask:"HH:HH:HH:HH:HH:HH"}).link($("ctrl_'.$dc->field.'"));</script>';
+			break;
 		}
 
 		return '';
@@ -117,5 +120,19 @@ class MeioMask extends \System
 		}
 
 		return $arrInputFormat[$strFormat];
+	}
+
+
+	public function regexMac($rgxp, $varInput, $objWidget)
+	{
+		if($rgxp != 'mac') return false;
+
+		if(!preg_match('~^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$~', $varInput))
+		{
+			$objWidget->addError('Please provie a MAC-Address, sperated with colons. Example: f0:de:f1:2a:72:c5', $objWidget->label);
+			return true;
+		}
+
+		return false;
 	}
 }

@@ -12,3 +12,5 @@
  */
 
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = array('\MeioMask\MeioMask', 'registerWizard');
+
+$GLOBALS['TL_HOOKS']['addCustomRegexp']['mac'] = array('\MeioMask\MeioMask', 'regexMac');
