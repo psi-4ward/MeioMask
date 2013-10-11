@@ -66,7 +66,7 @@ class MeioMask extends \System
 				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
 			break;
 			case 'mac':
-				// return '<script>new Meio.Mask.Fixed({mask:"HH:HH:HH:HH:HH:HH"}).link($("ctrl_'.$dc->field.'"));</script>';
+				return '<script>new Meio.Mask.Fixed({mask:"HH:HH:HH:HH:HH:HH"}).link($("ctrl_'.$dc->field.'"));</script>';
 			break;
 		}
 
