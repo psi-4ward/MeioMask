@@ -26,7 +26,7 @@ class MeioMask extends \System
 	public function registerWizard($strTable)
 	{
 		if(!is_array($GLOBALS['TL_DCA'][$strTable]['fields'])) return;
-		$GLOBALS['TL_JAVASCRIPT']['MeioMask'] = 'system/modules/MeioMask/public/Meio.Mask.js';
+		$GLOBALS['TL_JAVASCRIPT']['MeioMask'] = 'system/modules/MeioMask/public/Meio.Mask-uncompressed.js';
 
 		foreach($GLOBALS['TL_DCA'][$strTable]['fields'] as $fld => $data)
 		{
@@ -68,6 +68,10 @@ class MeioMask extends \System
 			break;
 			case 'mac':
 				return '<script>new Meio.Mask.Fixed({mask:"HH:HH:HH:HH:HH:HH"}).link($("ctrl_'.$dc->field.'"));</script>';
+			break;
+			case 'ip':
+				// TODO: Fix this $('ctrl_ip').meiomask('regexp.Ip');
+				// return '<script>new Meio.Mask.Regexp({mask:"Ip"}).link($("ctrl_'.$dc->field.'"));</script>';
 			break;
 		}
 
@@ -131,6 +135,20 @@ class MeioMask extends \System
 		if(!preg_match('~^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$~', $varInput))
 		{
 			$objWidget->addError('Please provie a MAC-Address, sperated with colons. Example: f0:de:f1:2a:72:c5', $objWidget->label);
+			return true;
+		}
+
+		return false;
+	}
+
+
+	public function regexIp($rgxp, $varInput, $objWidget)
+	{
+		if($rgxp != 'ip') return false;
+
+		if(!preg_match('~^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$~', $varInput))
+		{
+			$objWidget->addError('Please provie a IP-Address, sperated with colons. Example: 127.0.0.1', $objWidget->label);
 			return true;
 		}
 
