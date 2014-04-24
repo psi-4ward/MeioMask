@@ -55,17 +55,18 @@ class MeioMask extends \System
 		switch($rgxp)
 		{
 			case 'date':
-				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['dateFormat']);
-				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
-			break;
+//				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['dateFormat']);
+//				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
+//			break;
+			case 'time':
+//				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['timeFormat']);
+//				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
+//			break;
 			case 'datim':
 				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['datimFormat']);
-				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"3d.1m.9999 2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
+				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"'.$mask.'"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
 			break;
-			case 'time':
-				$mask = $this->convertDateformatToMeioMask($GLOBALS['TL_CONFIG']['timeFormat']);
-				return ($mask !== 'false') ? '<script>new Meio.Mask.Fixed({mask:"2h:59"}).link($("ctrl_'.$dc->field.'"));</script>' : '';
-			break;
+
 			case 'mac':
 				return '<script>new Meio.Mask.Fixed({mask:"HH:HH:HH:HH:HH:HH"}).link($("ctrl_'.$dc->field.'"));</script>';
 			break;
